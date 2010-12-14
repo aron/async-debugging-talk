@@ -1,0 +1,104 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<link rel="stylesheet" type="text/css" href="/css/main.css?v1.0" />
+		<title>A crash course in debugging JavaScript in the browser</title>
+	</head>
+	<body>
+		<h1>Debugging JavaScript</h1>
+		<h2>Types of Error</h2>
+		<ul>
+			<li>
+				<code>Syntax Errors</code> &mdash; typos and mistakes in the code. 
+				<pre><code>
+					// Missing parentheses, braces etc.
+					console.log([1, 2, 3, 4];
+				</code></pre>
+			</li>
+			<li>
+				<code>Runtime Errors</code> &mdash; trying to use non-existent properties.  
+				<pre><code>
+					// Calling an undefined method.
+					var obj = {};
+					obj.method();
+				</code></pre>
+			</li>
+		</ul>
+		<h2>Console</h2>
+		<ul>
+			<li>
+				<code>console.log()</code> &mdash; prints out to the console. 
+				<pre><code>
+					console.log("An object: %o and an array: %o", {a: 1}, [1, 2, 3]);
+				</code></pre>
+			</li>
+			<li>
+				<code>console.dir()</code> &mdash; inspects the properties on an object. 
+				<pre><code>
+					console.dir({a: 1, b: 2, c: "skips"});
+				</code></pre>
+			</li>
+			<li>
+				<code>console.dirxml()</code> &mdash; inspects a DOM node. 
+				<pre><code>
+					console.dirxml(document.querySelectorAll(".wotsits"));
+				</code></pre>
+			</li>
+			<li>
+				<code>console.assert()</code> &mdash; validates a statement as <code>true</code>. 
+				<pre><code>
+					console.assert(quavers === "wholesome", "Oh no, expression isn't true");
+				</code></pre>
+			</li>
+		</ul>
+		<h2>Command Line</h2>
+		<ul>
+			<li>
+				<code>dir(), dirxml()</code> &mdash; identical to their console counterparts. 
+				<pre><code>
+					// Save some typing.
+					dir("Yada yada");
+					dirxml(document.getElementsByTagName("script"));
+				</code></pre>
+			</li>
+			<li>
+				<code>$n, $(), $$(), $x()</code> &mdash; functions to query the DOM. 
+				<pre><code>
+					$0; //=> The currently selected DOM node in the inspector.
+					$1; //=> The previously selected DOM node in the inspector.
+					$("mccoys"); //=> Alias of document.getElementById().
+					$$("div .frazzles"); //=> Alias of document.querySelectorAll().
+					$x("/noone/likes/xpath/anyway"); //=> An xpath query.
+				</code></pre>
+			</li>
+			<li>
+				<code>inspect()</code> &mdash; jumps to the relevant info pane. 
+				<pre><code>
+					inspect($$('body')[0]); //=> Jump to the body in the Elements pane.
+				</code></pre>
+			</li>
+		</ul>
+		<h2>Debugger</h2>
+		<ul>
+			<li><code>Step In/Out</code> &mdash; step in and out of the current function</li>
+			<li><code>Step Over</code> &mdash; skip over the next function</li>
+			<li><code>Continue</code> &mdash; continue on to the next breakpoint</li>
+			<li><code>Watch</code> &mdash; track changes to a variable</li>
+		</ul>
+		<h2>Additional Resources</h2>
+		<ul>
+			<li><a href="http://getfirebug.com/wiki/index.php/Console_API">Firebug Console API</a></li>
+			<li><a href="http://developer.apple.com/library/safari/#documentation/AppleApplications/Conceptual/Safari_Developer_Guide/1Introduction/Introduction.html">Safari Developer Guide</a></li>
+			<li><a href="http://www.youtube.com/watch?v=TH7sJbyXHuk">Google I/O 2010 - Google Chrome's developer tools</a></li>
+			<li><a href="https://deimos.apple.com/WebObjects/Core.woa/BrowsePrivately/adc.apple.com.4092381871.04092381873.4096505765?i=1148279604">Getting the most out of Safari Developer Tools</a> (Apple Developer Account Required)</li>
+		</ul>
+		<h2>About this presentation</h2>
+		<p>This series of bulleted lists are the &ldquo;slides&rdquo; from a talk on debugging JavaScript
+		   given at an <a href="http://asyncjs.com/debug/" title="Visit the Async page for this talk">Async
+		   meet-up on the 6th December 2010</a>. As such there isn't much to see here in terms of content
+		   but it may be useful to those who were there.</p>
+		<script src="javascript/highlight.js"></script>
+		<script src="javascript/examples.js"></script>
+	</body>
+</html>
